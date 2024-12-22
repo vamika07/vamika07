@@ -1,0 +1,95 @@
+-----------Assignment-1----------------
+
+Queries as per requirement:
+
+
+1. Total number of employees
+select count(*) from emp;
+
+2. Total number of departments
+select count(*) from dept;
+
+3. All the employees
+select * from emp;
+
+4. All the departments
+select * from dept;
+
+5. Total salary paid for all employees
+select sum(sal) from emp;
+
+6. Total commission paid to all employees
+select sum(comm) from emp;
+
+7. Job titles of employees who get commission paid
+select distinct job from emp where comm is not null;
+
+8. System date
+select sysdate from dual;
+
+9. Average salary paid to all employees
+select avg(sal) from emp;
+
+10. Number of employees in each department
+select deptno, count(*) from emp group by deptno;
+
+11. Total salary of employees in each department
+select deptno, sum(sal) from emp group by deptno;
+
+12. Number of employees under each job title
+select job, count(*) from emp group by job;
+
+13. Average salary paid for each job title
+select job, avg(sal) from emp group by job;
+
+14. Hire day, month, and year for each employee
+select empno, ename,  to_char(hiredate, 'dd') day_of_hire, to_char(hiredate, 'mm') month_of_hire, to_char(hiredate, 'yyyy') year_of_hire from emp;
+
+15. Sort employees department-wise
+select * from emp order by deptno;
+
+16. Sort employees based on their job titles
+select * from emp order by job;
+
+17. Sort employees in descending order of their salaries
+select * from emp order by sal desc;
+
+18. Sort employees by department ascending and salary descending
+select * from emp order by deptno asc, sal desc;
+
+19. Employees whose names have 6 characters
+select * from emp where length(ename) = 6;
+
+20. Maximum and minimum salary paid
+select max(sal), min(sal) from emp;
+
+21. Maximum, minimum, average, and sum of salary by department
+select deptno, max(sal), min(sal), avg(sal), sum(sal) from emp group by deptno;
+
+22. Sort employees by their hire date
+select * from emp order by hiredate;
+
+23. Employee who joined latest
+select * from emp where hiredate = (select max(hiredate) from emp);
+
+24. Oldest employee in the organization based on hire date
+select * from emp where hiredate = (select min(hiredate) from emp);
+
+25. Sort employees by hire year descending and department ascending
+select * from emp order by to_char(hiredate, 'YYYY') desc, deptno asc;
+
+26. Employees with salaries greater than or equal to the average salary
+select * from emp where sal >= (select avg(sal) from emp);
+
+27. Employees with salaries less than or equal to the average salary
+select * from emp where sal <= (select avg(sal) from emp);
+
+28. Employees with salaries between 2000 and 4000
+select * from emp where sal between 2000 and 4000;
+
+29. Employees with the highest and lowest salary
+select * from emp where sal = (select max(sal) from emp) or sal = (select min(sal) from emp);
+
+30. Employees joining in the next month (to buy gifts)
+ select count(*) from emp where to_char(hiredate, 'MON') = 'JAN'
+
